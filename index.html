@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MTA Toll Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="MTA Calculator/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container mt-4 text-center">
+        <div class="calculator p-4">
+            <header class="text-center mb-4">
+                <img src="Images/MTALogo.png" alt="MTA Logo" class="img-fluid">
+                <h1 class="mt-3">MTA Toll Calculator</h1>
+            </header>
+
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <fieldset class="vehicle-type mb-4">
+                        <legend>Choose Vehicle Type</legend>
+                        <ul>
+                            <li class="radio-container">
+                                <input type="radio" id="car" name="vehicle-type" value="car">
+                                <label for="car">Cars <i class="fa-solid fa-car"></i></label>
+                            </li>
+
+                            <li class="radio-container">
+                                <input type="radio" id="motorcycle" name="vehicle-type" value="motorcycle">
+                                <label for="motorcycle">Motorcycles <i class="fa-solid fa-motorcycle"></i></label>
+                            </li>
+                            <li class="radio-container">
+                                <input type="radio" id="truck" name="vehicle-type" value="truck">
+                                <label for="truck">Trucks <i class="fa-solid fa-truck"></i></label>
+                                <select id="truck-axles">
+                                    <option value="2-axle">2 Axles</option>
+                                    <option value="3-axle">3 Axles</option>
+                                    <option value="4-axle">4 Axles</option>
+                                    <option value="5-axle">5 Axles</option>
+                                    <option value="6-axle">6 Axles or Greater</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </fieldset>
+
+                    <fieldset class="toll-facilities">
+                        <legend>Choose Toll Facilities</legend>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge1" value="Bronx-Whitestone"
+                                onclick="makeBoldCheckbox(this)"> Bronx-Whitestone</label><br>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge8" value="Cross-Bay-Veterans"
+                                onclick="makeBoldCheckbox(this)"> Cross Bay Veterans Memorial Bridge</label><br>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge7" value="Henry-Hudson"
+                                onclick="toggleTruckNotAllowedText(this)" ONCLICK="makeBoldCheckbox(this)">
+                            Henry Hudson Bridge<strong id="truckNotAllowedText" style="color: red; display: none;"> [Trucks are not
+                                Allowed]</strong>
+                        </label><br>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge4" value="Hugh-L-Carey"
+                                onclick="makeBoldCheckbox(this)"> Hugh L. Carey</label><br>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge9" value="Marine-Parkway"
+                                onclick="makeBoldCheckbox(this)"> Marine Parkway-Gil Hodges Memorial Bridge</label><br>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge5" value="Queens-Midtown-Tunnel"
+                                onclick="makeBoldCheckbox(this)"> Queens Midtown Tunnels</label><br>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge3" value="Robert-F-Kennedy"
+                                onclick="makeBoldCheckbox(this)"> Robert F. Kennedy Bridges</label><br>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge2" value="Throgs-Neck"
+                                onclick="makeBoldCheckbox(this)"> Throgs Neck</label><br>
+                        <label><input type="checkbox" class="toll-facility-checkbox" id="bridge6" value="Verrazzano-Narrows"
+                                onclick="makeBoldCheckbox(this)"> Verrazzano-Narrows Bridge</label><br>
+
+                    </fieldset>
+
+                    <fieldset class="mb-4">
+                            <legend>Toll Prices</legend>
+                            <table class="table">
+                                <tr>
+                                    <td>E-ZPass</td>
+                                    <td>$<span id="ezpassCost">0.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Mid-Tier</td>
+                                    <td>$<span id="midtierCost">0.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Toll by Mail</td>
+                                    <td>$<span id="tollbymailCost">0.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Staten Island Resident Ezpass</td>
+                                    <td>$<span id="statenislandCost">0.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Rockaway Resident Ezpass</td>
+                                    <td>$<span id="rockawayresidentCost">0.00</span></td>
+                                </tr>
+                            </table>
+                        </fieldset>
+
+                    
+                </div>
+                <!-- <div class="col-md-6">
+                    <div>
+                        
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-2" onclick="calculateTotalCost()">Calculate</button>
+                <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="MTA Calculator/js/script.js"></script>
+</body>
+
+</html>
